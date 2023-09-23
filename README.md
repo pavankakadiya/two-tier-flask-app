@@ -76,6 +76,29 @@ To stop and remove the Docker containers, press `Ctrl+C` in the terminal where t
 docker-compose down
 ```
 
+## To run this two-tier application using  without docker-compose
+
+- First create a docker image from Dockerfile
+```bash
+docker build -t flaskapp .
+```
+
+- Now, make sure that you have created a network using following command
+```bash
+docker network create twotier
+```
+
+- Attach both the containers in the same network, so that they can communicate with each other
+i) MySQL container 
+```bash
+docker run -d --name mysql -v mysql-data:/var/lib/mysql --network=twotier -e MYSQL_DATABASE=mydb -e MYSQL_USER=admin -e MYSQL_ROOT_PASSWORD="admin" nginx:latest
+```
+ii) Backend container
+```bash
+docker run -d --name flaskapp -v mysql-data:/var/lib/mysql --network=twotier -e MYSQL_HOST=mysql -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -e MYSQL_DB=mydb flaskapp:latest
+```
+
+
 ## Notes
 
 - Make sure to replace placeholders (e.g., `your_username`, `your_password`, `your_database`) with your actual MySQL configuration.
