@@ -89,6 +89,7 @@ docker network create twotier
 ```
 
 - Attach both the containers in the same network, so that they can communicate with each other
+
 i) MySQL container 
 ```bash
 docker run -d --name mysql -v mysql-data:/var/lib/mysql --network=twotier -e MYSQL_DATABASE=mydb -e MYSQL_USER=admin -e MYSQL_ROOT_PASSWORD="admin" nginx:latest
