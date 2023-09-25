@@ -4,7 +4,7 @@ metadata:
   name: appservice
 spec:
   selector:
-    app: twotier
+    app: twotierapp
   ports:
     - protocol: TCP
       port: 80
