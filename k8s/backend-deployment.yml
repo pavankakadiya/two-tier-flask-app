@@ -19,12 +19,12 @@ spec:
           image: madhupdevops/two-tier-microservice-app:latest
           env:
             - name: MYSQL_HOST
-              value: "mysql"
+              value: "<cluster_ip>"
             - name: MYSQL_PASSWORD
               value: "admin"
             - name: MYSQL_USER
               value: "root"
-            - name: MYSQL_DATABASE
+            - name: MYSQL_DB
               value: "mydb"
           ports:
             - containerPort: 5000
