@@ -16,8 +16,6 @@ env:
   mysqldb: mydb
   mysqlpassword: admin
 
-container:
-  name: mysql
 
 imagePullSecrets: []
 nameOverride: ""
